@@ -174,6 +174,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5644008162106212734, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008162106212734, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960436, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960436, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960436, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960436, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960438, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -88.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644008163282960439, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5644008163282960443, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
       propertyPath: playerData
       value: 
@@ -206,9 +238,29 @@ PrefabInstance:
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5675610542848118107, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_Name
+      value: PlayerSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675610542848118108, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675610542848118108, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675610542848118109, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6166629873812066659, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
       propertyPath: m_Name
       value: Sidescroller
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678626841984664398, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
@@ -255,3 +307,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &780523415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5644008163282960432, guid: 7b99edf3dd4a6614f967f828beb61774, type: 3}
+  m_PrefabInstance: {fileID: 221332269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &780523421
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780523415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dba2d427aa6b30f458440a2e1842d8ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
