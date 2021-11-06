@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class State
 {
     public StateMachine stateMachine;
-    public Character character;
+    public Player player;
+
 
     // Constructor for the state taking in a stateMachine its assigned to and a character its manipulating
     public State(StateMachine stateMachine, Player player)
@@ -17,7 +20,7 @@ public class State
     // Method getting called by the SM when entering the state
     public virtual void Enter()
     {
-
+    
     }
 
     // Method getting called by the SM when exiting the state
