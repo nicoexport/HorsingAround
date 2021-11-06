@@ -12,4 +12,5 @@ public class ItemSO : ScriptableObject
     public Sprite icon;
     public float moveSpeedMulti;
     public float jumpForceMulti;
+    public float staminaGain;
 }

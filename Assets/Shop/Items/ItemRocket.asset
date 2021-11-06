@@ -19,3 +19,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6d18f07b74bd67a48b8f259dc8878f5d, type: 3}
   moveSpeedMulti: 3
   jumpForceMulti: 2
+  staminaGain: 50

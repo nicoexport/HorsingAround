@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class Player : MonoBehaviour
@@ -11,8 +12,11 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
+    public float stamina = 100f;
+    [SerializeField]
+    private float staminaDecrease = 1f;
     
-
+    public UnityEvent onDie;
 
     public GroundedState groundedState;
     public JumpingState jumpingState;
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         movementSM.CurrentState.HandleInput();
+
     }
 
     private void FixedUpdate()
@@ -43,7 +48,12 @@ public class Player : MonoBehaviour
     public void Move(float speed)
     {
         rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
+        if (stamina > 0) stamina -= staminaDecrease;
+        else onDie.Invoke(); 
+        Debug.Log("Stamina: " + stamina);
     }
+
+    
 
     public bool CheckCollisionOverlap(Vector3 point, float radius)
     {
@@ -69,6 +79,7 @@ public class Player : MonoBehaviour
         {
             moveSpeed *= item.moveSpeedMulti;
             jumpForce *= item.jumpForceMulti;
+            stamina += item.staminaGain;
         }
     }
 }
