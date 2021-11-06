@@ -19,7 +19,7 @@ public class Item
         this.cost = cost;
         this.name = name;
         this.description = description;
-        this.icon = Resources.Load<Sprite>("Shop/Art" + name);
+        this.icon = Resources.Load<Sprite>("Shop/" + name);
         this.stats = stats;
     }
 
@@ -29,7 +29,7 @@ public class Item
         this.cost = item.cost;
         this.name = item.name;
         this.description = item.description;
-        this.icon = Resources.Load<Sprite>("Shop/Art/" + name);
+        this.icon = Resources.Load<Sprite>("Shop/" + name);
         this.stats = item.stats;
     }
 }
