@@ -27,7 +27,10 @@ public class GroundedState : MovementState
     public override void HandleInput()
     {
         base.HandleInput();
-        jump = Input.GetButtonDown("Jump");
+        if(Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
     }
 
     public override void LogicUpdate()
