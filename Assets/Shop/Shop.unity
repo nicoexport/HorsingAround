@@ -575,6 +575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 6653469067856270937, guid: 032a193cb01ec9b46ae4f822d54aded8, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: f4a25ba8b2d40e94aa8e08a4f7826f56, type: 2}
     - target: {fileID: 6653469069233595461, guid: 032a193cb01ec9b46ae4f822d54aded8, type: 3}
       propertyPath: m_Name
       value: background

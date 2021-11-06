@@ -11,13 +11,16 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
+    
 
 
     public GroundedState groundedState;
     public JumpingState jumpingState;
 
 
-    private StateMachine movementSM;   
+    private StateMachine movementSM;
+    [SerializeField]   
+    private PlayerData playerData;
 
     private void Start()
     {

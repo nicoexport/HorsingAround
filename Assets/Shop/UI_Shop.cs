@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
+
+
 public class UI_Shop : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerData playerData;
     private Transform container;
     private Transform shopItemTemplate;
-    private ItemDatabase database;
 
     private void Awake()
     {
@@ -18,14 +22,14 @@ public class UI_Shop : MonoBehaviour
 
     private void Start()
     {
-        database = new ItemDatabase();
-        foreach (Item item in database.items)
+
+        foreach (ItemSO item in playerData.allItems)
         {
             CreateItemButton(item, item.id);
         }
     }
 
-    private void CreateItemButton(Item item, int positionIndex)
+    private void CreateItemButton(ItemSO item, int positionIndex)
     {
         Transform shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
@@ -35,6 +39,12 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(item.cost.ToString());
         shopItemTransform.Find("icon").GetComponent<Image>().sprite = item.icon;
-        shopItemTransform.gameObject.SetActive(true);
+        shopItemTransform.gameObject.SetActive(true);  
+        shopItemTransform.GetComponent<Button>().onClick.AddListener(() => Unlock(positionIndex));
+    }
+    
+    private void Unlock(int id)
+    {
+        playerData.AddItem(id);
     }
 }
