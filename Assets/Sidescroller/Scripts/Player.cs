@@ -24,10 +24,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        movementSM = new StateMachine();
-        groundedState = new GroundedState(movementSM, this);
-        jumpingState = new JumpingState(movementSM, this);
-        movementSM.Initialize(groundedState); 
+        InitializeStates();
+        ReadPlayerData();
         if(!rb) rb = GetComponent<Rigidbody2D>();
     }
 
@@ -57,4 +55,20 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
     
+    private void InitializeStates()
+    {
+        movementSM = new StateMachine();
+        groundedState = new GroundedState(movementSM, this);
+        jumpingState = new JumpingState(movementSM, this);
+        movementSM.Initialize(groundedState); 
+    }
+
+    private void ReadPlayerData()
+    {
+        foreach (ItemSO item in playerData.items)
+        {
+            moveSpeed *= item.moveSpeedMulti;
+            jumpForce *= item.jumpForceMulti;
+        }
+    }
 }
