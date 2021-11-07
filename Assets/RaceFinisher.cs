@@ -11,6 +11,11 @@ public class RaceFinisher : MonoBehaviour
     [SerializeField]
     float conversionRate = 0.5f;
 
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         AddCurrency();
