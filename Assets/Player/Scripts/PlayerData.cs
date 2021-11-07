@@ -12,14 +12,14 @@ public class PlayerData : ScriptableObject
 
     public void AddItem(int id)
     {
-        if(items.Contains(allItems[id])) return;
-        if(currency - allItems[id].cost < 0) 
+        if (items.Contains(allItems[id])) return;
+        if (currency - allItems[id].cost < 0)
         {
             Debug.Log("Not enough cash");
             return;
         }
-        items.Add(allItems[id]); 
-        currency -= allItems[id].cost;  
+        items.Add(allItems[id]);
+        currency -= allItems[id].cost;
     }
 
     public void RemoveItem(int id)
