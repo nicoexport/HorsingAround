@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ButtonPress : MonoBehaviour
 {
     public Button button;
+    public ItemSO item;
+    public PlayerData playerData;
 
     void Start()
     {
@@ -14,6 +16,6 @@ public class ButtonPress : MonoBehaviour
     public void TaskOnClick()
     {
         //add current Feature to Player
-        button.GetComponent<Image>().color = Color.red;
+        playerData.AddItem(item.id);
     }
 }
