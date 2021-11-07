@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
     private float staminaDecrease = 1f;
     public bool pause;
     public UnityEvent onDie;
-
     public GroundedState groundedState;
     public JumpingState jumpingState;
     public PauseState pauseState;
 
+    public GameObject[] unlocks;
     private StateMachine movementSM;
     [SerializeField]
     private PlayerAnimCtrl animCtrl;
@@ -90,11 +90,13 @@ public class Player : MonoBehaviour
 
     private void ReadPlayerData()
     {
+        foreach (var unlock in unlocks) unlock.SetActive(false);
         foreach (ItemSO item in playerData.items)
         {
             moveSpeed *= item.moveSpeedMulti;
             jumpForce *= item.jumpForceMulti;
             stamina += item.staminaGain;
+            if(unlocks[item.id] != null) unlocks[item.id].SetActive(true);
         }
     }
 }
