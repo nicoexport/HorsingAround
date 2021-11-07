@@ -8,52 +8,66 @@ public class Player : MonoBehaviour
 {
     public float jumpForce;
     public float moveSpeed;
-    public Rigidbody2D rb; 
+    public Rigidbody2D rb;
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     public float stamina = 100f;
     [SerializeField]
     private float staminaDecrease = 1f;
-    
+    public bool pause;
     public UnityEvent onDie;
 
     public GroundedState groundedState;
     public JumpingState jumpingState;
-
+    public PauseState pauseState;
 
     private StateMachine movementSM;
-    [SerializeField]   
+    [SerializeField]
+    private PlayerAnimCtrl animCtrl;
+    [SerializeField]
     private PlayerData playerData;
 
+    private void Awake()
+    {
+        ReadPlayerData();
+    }
     private void Start()
     {
         InitializeStates();
-        ReadPlayerData();
-        if(!rb) rb = GetComponent<Rigidbody2D>();
+        if (!rb) rb = GetComponent<Rigidbody2D>();
+        if (!animCtrl) animCtrl = GetComponent<PlayerAnimCtrl>();
     }
 
     private void Update()
     {
         movementSM.CurrentState.HandleInput();
-
+        animCtrl.SetAnimationeState(movementSM.CurrentState, rb.velocity.x, rb.velocity.y);
     }
 
     private void FixedUpdate()
     {
         movementSM.CurrentState.LogicUpdate();
         movementSM.CurrentState.PhysicsUpdate();
+
     }
 
     public void Move(float speed)
     {
-        rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
-        if (stamina > 0) stamina -= staminaDecrease;
-        else onDie.Invoke(); 
+        if (stamina > 0)
+        {
+            stamina -= staminaDecrease;
+            rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
+        }
+        else 
+        {
+            onDie.Invoke();
+            pause = true;
+        }
         Debug.Log("Stamina: " + stamina);
     }
 
-    
+
 
     public bool CheckCollisionOverlap(Vector3 point, float radius)
     {
@@ -64,13 +78,14 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
-    
+
     private void InitializeStates()
     {
         movementSM = new StateMachine();
         groundedState = new GroundedState(movementSM, this);
         jumpingState = new JumpingState(movementSM, this);
-        movementSM.Initialize(groundedState); 
+        pauseState = new PauseState(movementSM, this);
+        movementSM.Initialize(groundedState);
     }
 
     private void ReadPlayerData()
