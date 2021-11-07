@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float staminaDecrease = 1f;
     public bool pause;
     public UnityEvent onDie;
+    public float maxStamina {get; private set;}
 
 
     public GroundedState groundedState;
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
             onDie.Invoke();
             pause = true;
         }
-        Debug.Log("Stamina: " + stamina);
+        //Debug.Log("Stamina: " + stamina);
     }
 
 
@@ -104,5 +105,6 @@ public class Player : MonoBehaviour
             stamina += item.staminaGain;
             if(unlocks[item.id] != null) unlocks[item.id].SetActive(true);
         }
+        maxStamina = stamina;
     }
 }
