@@ -39,10 +39,9 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(item.cost.ToString());
         shopItemTransform.Find("icon").GetComponent<Image>().sprite = item.icon;
-        shopItemTransform.gameObject.SetActive(true);  
+        shopItemTransform.gameObject.SetActive(true);
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() => Unlock(positionIndex));
     }
-    
     private void Unlock(int id)
     {
         playerData.AddItem(id);
