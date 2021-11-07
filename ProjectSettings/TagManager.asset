@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GroundSimple
   - BackgroundTest
+  - ColliderForBackgroundGen
   layers:
   - Default
   - TransparentFX
