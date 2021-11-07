@@ -28,10 +28,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private PlayerData playerData;
 
+    private void Awake()
+    {
+        ReadPlayerData();
+    }
     private void Start()
     {
         InitializeStates();
-        ReadPlayerData();
         if (!rb) rb = GetComponent<Rigidbody2D>();
         if (!animCtrl) animCtrl = GetComponent<PlayerAnimCtrl>();
     }
