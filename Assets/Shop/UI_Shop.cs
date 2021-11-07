@@ -25,7 +25,10 @@ public class UI_Shop : MonoBehaviour
 
         foreach (ItemSO item in playerData.allItems)
         {
-            CreateItemButton(item, item.id);
+            if (!playerData.items.Contains(item))
+            {
+                CreateItemButton(item, item.id);
+            }
         }
     }
 

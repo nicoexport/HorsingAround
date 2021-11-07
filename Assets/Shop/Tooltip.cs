@@ -15,9 +15,9 @@ public class Tooltip : MonoBehaviour
 
     private void Update()
     {
-        Vector2 localPoint;
+        /*Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, uiCamera, out localPoint);
-        transform.localPosition = localPoint;
+        transform.localPosition = localPoint;*/
     }
 
     private void Awake()
@@ -25,8 +25,7 @@ public class Tooltip : MonoBehaviour
         instance = this;
         backgroundRectTransform = transform.Find("background").GetComponent<RectTransform>();
         tooltipText = transform.Find("text").GetComponent<TextMeshProUGUI>();
-
-        ShowTooltip("Sampletext");
+        gameObject.SetActive(false);
     }
     private void ShowTooltip(string tooltipString)
     {

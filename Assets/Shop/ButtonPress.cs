@@ -12,28 +12,31 @@ public class ButtonPress : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public PlayerData playerData;
 
     public UnityEvent sexEffex;
-
-    public Tooltip tooltip;
     private bool mouseOver = false;
 
     void Update()
     {
         if (mouseOver)
         {
+            print(item.name);
             Tooltip.ShowTooltip_Static(item.cost.ToString());
         }
-        else
+        /*if (!mouseOver)
         {
             Tooltip.HideTooltip_Static();
-        }
+        }*/
     }
     void Start()
     {
         button.onClick.AddListener(TaskOnClick);
+        if (playerData.items.Contains(item))
+        {
+            button.gameObject.SetActive(false);
+        }
     }
     public void TaskOnClick()
     {
-        if (!playerData.items.Contains(item))
+        if (!playerData.items.Contains(item) && playerData.currency >= item.cost)
         {
             //add current Feature to Player
             playerData.AddItem(item.id);
@@ -50,6 +53,7 @@ public class ButtonPress : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseOver = false;
+        Tooltip.HideTooltip_Static();
     }
 
 }
