@@ -13,8 +13,7 @@ public class PlayerAnimCtrl : MonoBehaviour
     const string running = "Run";
     const string falling = "Fall";
     const string jumping = "Jump";
-
-
+    const string pause = "Dead";
 
     private void Start()
     {
@@ -36,6 +35,10 @@ public class PlayerAnimCtrl : MonoBehaviour
             case "JumpingState":
                 if (verticalVelocity > 0f) newAnimState = jumping;
                 else newAnimState = falling;
+                break;
+            
+            case "PauseState":
+                newAnimState = pause;
                 break;
 
             default:
