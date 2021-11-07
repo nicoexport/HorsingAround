@@ -12,7 +12,7 @@ public class BackgroundSpawnOnCollide : MonoBehaviour
     public GameObject backgroundOld;
 
     //safe position of next bg for instantiation
-    public float savePosBGNext;
+    private float savePosBGNext;
     //width off the backgrounds
     public float width = 32;
 
