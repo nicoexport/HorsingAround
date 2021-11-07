@@ -15,13 +15,13 @@ public class Player : MonoBehaviour
     public float stamina = 100f;
     [SerializeField]
     private float staminaDecrease = 1f;
-
+    public bool pause;
     public UnityEvent onDie;
-
     public GroundedState groundedState;
     public JumpingState jumpingState;
+    public PauseState pauseState;
 
-
+    public GameObject[] unlocks;
     private StateMachine movementSM;
     [SerializeField]
     private PlayerAnimCtrl animCtrl;
@@ -54,9 +54,16 @@ public class Player : MonoBehaviour
 
     public void Move(float speed)
     {
-        rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
-        if (stamina > 0) stamina -= staminaDecrease;
-        else onDie.Invoke();
+        if (stamina > 0)
+        {
+            stamina -= staminaDecrease;
+            rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
+        }
+        else 
+        {
+            onDie.Invoke();
+            pause = true;
+        }
         Debug.Log("Stamina: " + stamina);
     }
 
@@ -77,16 +84,19 @@ public class Player : MonoBehaviour
         movementSM = new StateMachine();
         groundedState = new GroundedState(movementSM, this);
         jumpingState = new JumpingState(movementSM, this);
+        pauseState = new PauseState(movementSM, this);
         movementSM.Initialize(groundedState);
     }
 
     private void ReadPlayerData()
     {
+        foreach (var unlock in unlocks) unlock.SetActive(false);
         foreach (ItemSO item in playerData.items)
         {
             moveSpeed *= item.moveSpeedMulti;
             jumpForce *= item.jumpForceMulti;
             stamina += item.staminaGain;
+            if(unlocks[item.id] != null) unlocks[item.id].SetActive(true);
         }
     }
 }
