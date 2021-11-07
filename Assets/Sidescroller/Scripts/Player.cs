@@ -12,14 +12,19 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
+    public float defaultDrag = 0.2f;
     public float stamina = 100f;
     [SerializeField]
     private float staminaDecrease = 1f;
     public bool pause;
     public UnityEvent onDie;
+    public float maxStamina {get; private set;}
+
+
     public GroundedState groundedState;
     public JumpingState jumpingState;
     public PauseState pauseState;
+    
 
     public GameObject[] unlocks;
     private StateMachine movementSM;
@@ -57,14 +62,16 @@ public class Player : MonoBehaviour
         if (stamina > 0)
         {
             stamina -= staminaDecrease;
-            rb.velocity = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
+            var force = new Vector2(speed * Time.fixedDeltaTime * 10f, rb.velocity.y);
+            rb.AddForce(force, ForceMode2D.Force);
         }
         else 
         {
+            rb.velocity = Vector2.zero;
             onDie.Invoke();
             pause = true;
         }
-        Debug.Log("Stamina: " + stamina);
+        //Debug.Log("Stamina: " + stamina);
     }
 
 
@@ -98,5 +105,6 @@ public class Player : MonoBehaviour
             stamina += item.staminaGain;
             if(unlocks[item.id] != null) unlocks[item.id].SetActive(true);
         }
+        maxStamina = stamina;
     }
 }

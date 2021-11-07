@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 2002677172121352326}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,13 +407,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  moveSpeed: 20
+  moveSpeed: 10
   rb: {fileID: 8495658580101875011}
   groundCheck: {fileID: 8495658578854872072}
   groundCheckRadius: 0.07
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  defaultDrag: 0.05
   stamina: 300
   staminaDecrease: 1
   pause: 0
@@ -458,7 +459,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8495658580101875014}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2747270898d493144b1cb9f2b0b19b13, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -488,10 +489,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.05
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2747270898d493144b1cb9f2b0b19b13, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
